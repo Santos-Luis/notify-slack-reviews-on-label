@@ -51,10 +51,10 @@ try {
     pull_request: {
       html_url: htmlUrl,
       requested_reviewers: requestedReviewers,
-      title,
-      repository: {
-        name: repoName
-      }
+      title
+    },
+    repository: {
+      name: repoName
     }
   } = payload;
   console.log(htmlUrl, requestedReviewers, title, repoName);
