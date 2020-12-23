@@ -65,7 +65,7 @@ try {
   console.log(repoName);
   console.log(authorName);
 
-  requestedReviewers.forEach(({ login }) => console.log(loging));;
+  requestedReviewers.forEach(({ login }) => console.log(login));;
 
     // console.log(payload);
     // const review = payload.review;
