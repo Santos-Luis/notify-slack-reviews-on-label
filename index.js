@@ -33,7 +33,6 @@ const fillTemplate = (payload, template) => {
 try {
   e = process.env;
   config = {
-    channel: e.SLACK_CHANNEL,
     hookUrl: e.SLACK_WEBHOOK,
     ignoreDrafts: e.IGNORE_DRAFTS || true,
     pr_approved_format: e.PR_APPROVED_FORMAT || DefaultPRApprovedFormat,
@@ -60,12 +59,13 @@ try {
       name: repoName
     }
   } = payload;
-  console.log(htmlUrl);
-  console.log(title);
-  console.log(repoName);
-  console.log(authorName);
+  // console.log(htmlUrl);
+  // console.log(title);
+  // console.log(repoName);
+  // console.log(authorName);
 
-  requestedReviewers.forEach(({ login }) => console.log(login));;
+  const reviewersNamesArray = requestedReviewers.map(({ login }) => login);;
+  const reviewersNames = reviewersNamesArray.join(', ');
 
     // console.log(payload);
     // const review = payload.review;
@@ -92,11 +92,10 @@ try {
     //     message = fillTemplate(payload, config.pr_ready_for_review_format);
     // }
 
-    // slack.send({
-    //     text: message,
-    //     channel: '#' + config.channel,
-    //     username: config.username
-    // });
+    slack.send({
+        text: 'Hi there from github',
+        username: config.username
+    });
 } catch (error) {
   Core.setFailed(error.message);
 };
