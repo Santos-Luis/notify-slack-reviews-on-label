@@ -93,7 +93,7 @@ try {
     // }
 
     slack.send({
-        text: 'Hi there from github',
+        text: `htmlUrl: ${htmlUrl}\ntitle: ${title}\nrepoName: ${repoName}\nauthorName: ${authorName}\nreviewersNames: ${reviewersNames}`,
         username: config.username
     });
 } catch (error) {
