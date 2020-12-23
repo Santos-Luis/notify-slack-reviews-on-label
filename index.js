@@ -51,13 +51,21 @@ try {
     pull_request: {
       html_url: htmlUrl,
       requested_reviewers: requestedReviewers,
-      title
+      title,
+      user: {
+        login: authorName
+      }
     },
     repository: {
       name: repoName
     }
   } = payload;
-  console.log(htmlUrl, requestedReviewers, title, repoName);
+  console.log(htmlUrl);
+  console.log(title);
+  console.log(repoName);
+  console.log(authorName);
+
+  requestedReviewers.forEach(({ login }) => console.log(loging));;
 
     // console.log(payload);
     // const review = payload.review;
