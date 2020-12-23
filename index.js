@@ -79,4 +79,4 @@ try {
     // });
 } catch (error) {
     Core.setFailed(error.message);
-}
+};
