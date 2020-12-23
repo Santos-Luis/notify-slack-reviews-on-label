@@ -1,0 +1,22 @@
+{
+  "name": "notify-slack-reviews-on-label",
+  "version": "1.0.0",
+  "description": "Send a message to slack with request reviews of a PR that had a label added",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Santos-Luis/notify-slack-reviews-on-label.git"
+  },
+  "keywords": [],
+  "author": "https://github.com/Santos-Luis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Santos-Luis/notify-slack-reviews-on-label/issues"
+  },
+  "homepage": "https://github.com/Santos-Luis/notify-slack-reviews-on-label#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.2",
+    "@actions/github": "^2.1.0",
+    "node-slack": "0.0.7"
+  }
+}
