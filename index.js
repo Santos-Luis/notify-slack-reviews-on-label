@@ -76,7 +76,7 @@ try {
     //     return
     // }
 
-    // const slack = new Slack(config.hookUrl);
+    const slack = new Slack(config.hookUrl);
 
     // if (review) {
     //     if (payload.review.state == "approved") {
