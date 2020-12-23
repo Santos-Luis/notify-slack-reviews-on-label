@@ -7,47 +7,59 @@ const DefaultPRChangesRequestedFormat = `Pull request *{ pull_request.title }* w
 const DefaultPRReadyForReviewFormat = `:rocket: New PR ready for review! :rocket:\nTitle: *{ pull_request.title }*\nAuthor: { pull_request.user.login }\nURL: { pull_request.html_url }`;
 
 const fillTemplate = (payload, template) => {
-    let message = template;
-    template.match(/\{(.*?)\}/g).forEach(template => {
-        const templateWithoutBrackets = template
-            .replace(/^\{\s?/, "")
-            .replace(/\s?\}$/, "");
+  let message = template;
+  template.match(/\{(.*?)\}/g).forEach(template => {
+    const templateWithoutBrackets = template
+      .replace(/^\{\s?/, "")
+      .replace(/\s?\}$/, "");
 
-        const keys = templateWithoutBrackets.split(".");
+    const keys = templateWithoutBrackets.split(".");
 
-        let value = payload;
-        keys.forEach(key => {
-            try {
-                if (value[key]) {
-                    value = value[key];
-                }
-            } catch (error) {
-                console.log(error);
-            }
-        });
-        message = message.replace(template, value);
+    let value = payload;
+    keys.forEach(key => {
+      try {
+        if (value[key]) {
+            value = value[key];
+        }
+      } catch (error) {
+        console.log(error);
+      }
     });
-    return message;
+    message = message.replace(template, value);
+  });
+  return message;
 };
 
 try {
-    e = process.env;
-    config = {
-        channel: e.SLACK_CHANNEL,
-        hookUrl: e.SLACK_WEBHOOK,
-        ignoreDrafts: e.IGNORE_DRAFTS || true,
-        pr_approved_format: e.PR_APPROVED_FORMAT || DefaultPRApprovedFormat,
-        pr_ready_for_review_format: e.PR_READY_FOR_REVIEW_FORMAT || DefaultPRReadyForReviewFormat,
-        pr_rejected_format: e.PR_REJECTED_FORMAT || DefaultPRChangesRequestedFormat,
-        username: e.USERNAME || 'ReadyForReviewBot'
-    };
+  e = process.env;
+  config = {
+    channel: e.SLACK_CHANNEL,
+    hookUrl: e.SLACK_WEBHOOK,
+    ignoreDrafts: e.IGNORE_DRAFTS || true,
+    pr_approved_format: e.PR_APPROVED_FORMAT || DefaultPRApprovedFormat,
+    pr_ready_for_review_format: e.PR_READY_FOR_REVIEW_FORMAT || DefaultPRReadyForReviewFormat,
+    pr_rejected_format: e.PR_REJECTED_FORMAT || DefaultPRChangesRequestedFormat,
+    username: e.USERNAME || 'ReadyForReviewBot'
+  };
 
-    if (!config.hookUrl) {
-        Core.setFailed("SLACK_WEBHOOK is not set. Set it with\nenv:\n\tSLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}\n");
+  if (!config.hookUrl) {
+    Core.setFailed("SLACK_WEBHOOK is not set. Set it with\nenv:\n\tSLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}\n");
+  }
+
+  const payload = Github.context.payload;
+  const {
+    pull_request: {
+      html_url: htmlUrl,
+      requested_reviewers: requestedReviewers,
+      title,
+      repository: {
+        name: repoName
+      }
     }
+  } = payload;
+  console.log(htmlUrl, requestedReviewers, title, repoName);
 
-    const payload = Github.context.payload;
-    console.log(payload);
+    // console.log(payload);
     // const review = payload.review;
     // const pr = payload.pull_request;
     // let message;
@@ -78,5 +90,5 @@ try {
     //     username: config.username
     // });
 } catch (error) {
-    Core.setFailed(error.message);
+  Core.setFailed(error.message);
 };
