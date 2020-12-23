@@ -1,0 +1,9 @@
+name: 'Reviews Slack Notifier by Label'
+description: 'Send a message to slack with request reviews of a PR that had a label added.'
+branding:
+  color: green
+  icon: message-square
+  
+runs:
+  using: 'node12'
+  main: 'index.js'
