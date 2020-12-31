@@ -28,11 +28,11 @@ try {
   const slack = new Slack(webhookUrl);
 
   const text = `
-    htmlUrl: ${htmlUrl}
-    title: ${title}
-    repoName: ${repoName}
-    authorName: ${authorName}
-    reviewersNames: ${reviewersNames}
+		htmlUrl: ${htmlUrl}
+		title: ${title}
+		repoName: ${repoName}
+		authorName: ${authorName}
+		reviewersNames: ${reviewersNames}
   `.replace(
     /\t/g,
     ''
