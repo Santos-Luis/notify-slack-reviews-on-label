@@ -33,7 +33,7 @@ try {
 		webhookUrl,
 		{
 			'username': 'TAGUS reviewer',
-			'icon_url': 'https://www.flaticon.com/svg/static/icons/svg/25/25231.svg',
+			'icon_url': 'https://iconape.com/wp-content/png_logo_vector/tagus-beer-logo.png',
 			'attachments': [
 				{
 					'color': '#36a64f',
