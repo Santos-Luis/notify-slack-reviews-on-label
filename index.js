@@ -36,9 +36,9 @@ try {
 			'icon_url': 'https://apprecs.org/ios/images/app-icons/256/20/921456160.jpg',
 			'attachments': [
 				{
-					'mrkdwn_in': ['text'],
 					'color': '#36a64f',
 					'pretext': 'Plsssss reviews 🙏',
+					'text': '⠀',
 					'author_name': authorName,
 					'author_icon': authorAvatar,
 					'title': title,
@@ -46,7 +46,7 @@ try {
 					'fields': [
 							{
 									'title': 'Repository',
-									'value': repoName,
+									'value': `${repoName}`,
 									'short': false
 							},
 							{
