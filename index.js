@@ -33,7 +33,7 @@ try {
 		webhookUrl,
 		{
 			'username': 'TAGUS reviewer',
-			'icon_url': 'https://iconape.com/wp-content/png_logo_vector/tagus-beer-logo.png',
+			'icon_url': 'https://apprecs.org/ios/images/app-icons/256/20/921456160.jpg',
 			'attachments': [
 				{
 					'color': '#36a64f',
