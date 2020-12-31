@@ -33,7 +33,7 @@ try {
 		webhookUrl,
 		{
 			'username': 'TAGUS reviewer',
-			'icon_url': 'https://apprecs.org/ios/images/app-icons/256/20/921456160.jpg',
+			'icon_url': 'https://www.flaticon.com/svg/static/icons/svg/25/25231.svg',
 			'attachments': [
 				{
 					'color': '#36a64f',
