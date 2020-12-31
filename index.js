@@ -27,16 +27,15 @@ try {
 
   const slack = new Slack(webhookUrl);
 
-  slack.send({
-      text: `
-        htmlUrl: ${htmlUrl}
-        title: ${title}
-        repoName: ${repoName}
-        authorName: ${authorName}
-        reviewersNames: ${reviewersNames}
-      `,
-      username
-  });
+  const text = `
+    htmlUrl: ${htmlUrl}
+    title: ${title}
+    repoName: ${repoName}
+    authorName: ${authorName}
+    reviewersNames: ${reviewersNames}
+  `;
+
+  slack.send({ text, username });
 } catch (error) {
   Core.setFailed(error.message);
 };
