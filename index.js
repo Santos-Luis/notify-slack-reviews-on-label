@@ -47,17 +47,17 @@ try {
 							{
 									'title': 'Repository',
 									'value': `${repoName}`,
-									'short': false
+									'short': true,
 							},
 							{
 									'title': 'A short field\'s title',
 									'value': 'A short field\'s value',
-									'short': true
+									'short': true,
 							},
 							{
 									'title': 'Reviewers',
-									'value': `${reviewersNames} ${reviewersNames} ${reviewersNames} ${reviewersNames} ${reviewersNames}`,
-									'short': true
+									'value': reviewersNames,
+									'short': false,
 							},
 					],
 				},
