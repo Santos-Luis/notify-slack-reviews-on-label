@@ -5,8 +5,8 @@ const axios = require('axios');
 try {
   const {
 		env: {
-			SLACK_WEBHOOK: webhookUrl
-		}
+			SLACK_WEBHOOK: webhookUrl,
+		},
 	} = process;
 
   const { context: { payload } } = Github;
@@ -19,7 +19,7 @@ try {
       user: {
 				login: authorName,
 				avatar_url: authorAvatar,
-      }
+      },
     },
     repository: {
       name: repoName,
@@ -64,6 +64,6 @@ try {
 			],
 		},
 	);
-} catch (error) {
-  Core.setFailed(error.message);
+} catch ({ message }) {
+  Core.setFailed(message);
 };
