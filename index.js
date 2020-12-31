@@ -33,7 +33,10 @@ try {
     repoName: ${repoName}
     authorName: ${authorName}
     reviewersNames: ${reviewersNames}
-  `;
+  `.replace(
+    /\t/g,
+    ''
+  );
 
   slack.send({ text, username });
 } catch (error) {
